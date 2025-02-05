@@ -21,7 +21,7 @@ public class ColorNames {
     public ColorNames() {
         super();
 
-        final InputStream inputStream = getClass().getClassLoader().getResourceAsStream(File.separator + CSV_FILE_NAME);
+        final InputStream inputStream = getClass().getResourceAsStream(File.separator + CSV_FILE_NAME);
         if(inputStream == null) {
             throw new RuntimeException("Could not find " + CSV_FILE_NAME);
         }
