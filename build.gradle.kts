@@ -1,45 +1,52 @@
 plugins {
+    `java-library`
+
     `maven-publish`
-    kotlin("jvm") version "2.0.20"
 }
 
-group = "me.aroze"
-version = "1.0-SNAPSHOT"
+group = "me.aroze.colornames"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    api("com.github.ajalt.colormath:colormath:3.6.0")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.7.1")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.test {
     useJUnitPlatform()
 }
 
+val JAVA_VERSION = 21
+
 java {
     withJavadocJar()
     withSourcesJar()
-}
 
-kotlin {
-    jvmToolchain(21)
-}
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(JAVA_VERSION))
+    }
 
-tasks.javadoc {
-    if (JavaVersion.current().isJava9Compatible) {
-        (options as StandardJavadocDocletOptions).addBooleanOption("html5", true)
+    tasks {
+        withType<JavaCompile> {
+            options.encoding = "UTF-8"
+            options.release.set(JAVA_VERSION)
+        }
+
+        javadoc {
+            (options as StandardJavadocDocletOptions)
+                .tags("apiNote:a:API:", "implSpec:a:Implementation Requirements", "implNote:a:Implementation Note:")
+        }
     }
 }
 
 publishing {
     publications {
-        create<MavenPublication>("mavenJava") {
+        register<MavenPublication>("gpr") {
             from(components["java"])
-            groupId = "me.aroze"
-            artifactId = "Color-Names"
-            version = "1.0-SNAPSHOT"
         }
     }
 }
