@@ -56,7 +56,7 @@ repositories {
 }
 
 dependencies {
-      implementation("me.aroze:color-names:1.0.3")
+      implementation("com.github.DebitCardz:Color-Names:<version>")
 }
 ```
 
@@ -68,9 +68,9 @@ dependencies {
 </repository>
 
 <dependency>
-  <groupId>me.aroze</groupId>
-  <artifactId>color-names</artifactId>
-  <version>1.0.3</version>
+  <groupId>com.github.DebitCardz</groupId>
+  <artifactId>Color-Names</artifactId>
+  <version>{version}</version>
 </dependency>
 ```
 
