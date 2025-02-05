@@ -1,6 +1,8 @@
 package me.aroze.colornames.util;
 
 public class ColorUtil {
+    private ColorUtil() { }
+
     public static float[] hexToLAB(String hex) {
         int rgb = Integer.parseInt(hex.substring(1), 16);
         int r = (rgb >> 16) & 0xFF;

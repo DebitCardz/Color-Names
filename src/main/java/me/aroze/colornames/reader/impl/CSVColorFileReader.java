@@ -44,34 +44,4 @@ public class CSVColorFileReader extends ColorFileReader {
             throw new RuntimeException(ex);
         }
     }
-
-
-//    @Override
-//    public void read(InputStreamReader reader) {
-//        try(final BufferedReader buffered = new BufferedReader(reader, 32768)) {
-//            List<NamedColor> colors = new ArrayList<>();
-//
-//            String line;
-//            boolean isFirstLine = true;
-//            while((line = buffered.readLine()) != null) {
-//                if(isFirstLine) {
-//                    isFirstLine = false;
-//                    continue;
-//                }
-//
-//                int commaIndex = line.indexOf(',');
-//                String name = line.substring(0, commaIndex);
-//                String hex = line.substring(commaIndex + 1);
-//
-//                double[] lab = ColorUtil.hexToLAB(hex);
-//                colors.add(new NamedColor(
-//                    name,
-//
-//                ))
-//            }
-//
-//        } catch(IOException ex) {
-//            throw new RuntimeException(ex);
-//        }
-//    }
 }
